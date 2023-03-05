@@ -15,8 +15,8 @@ const fetchCurrencies = async () => {
 const calculateCurrencies = async () => {
     const result = await fetchCurrencies();
     let EUR, USD, CHF;
-    const input = document.querySelector('.input-name');
-    const select = document.querySelector('.currency-select');
+    const input = parseFloat(document.querySelector('.input-name').value);
+    const select = document.querySelector('.currency-select').value;
     const paragraphResult  = document.querySelector('.result');
     let calculated = 0;
 
@@ -30,18 +30,24 @@ const calculateCurrencies = async () => {
         }
     }
 
-    if (input.value >= 0){
-        if(select.value == "EUR"){
-            calculated = input.value * EUR;
-        }else if(select.value == "USD"){
-            calculated = input.value * USD;
-        }else if(select.value == "CHF"){
-            calculated = input.value * CHF;
+    if (!isNaN(input) && input >= 0){
+        if(select == "EUR"){
+            calculated = input * EUR;
+        }else if(select == "USD"){
+            calculated = input * USD;
+        }else if(select == "CHF"){
+            calculated = input * CHF;
         }
+        console.log("input type " +  typeof input);
         calculated = calculated.toFixed(2);
-        paragraphResult.innerText = `${input.value} ${select.value} to ${calculated} PLN`;
+        paragraphResult.innerText = `${input} ${select} to ${calculated} PLN`;
     }else{
-        alert('Kwota nie może być ujemna! Wprowadź odpowiednią wartość.');
+        swal({
+            title: "Kwota musi być liczbą nieujemną",
+            text: "Wprowadź odpowiednią wartość.",
+            icon: "error",
+            button: "No dobra",
+          });
     }
 };
 
