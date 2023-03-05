@@ -51,6 +51,8 @@ form{
     display: flex;
     
     .input-button{
+        -webkit-appearance: none;
+        opacity: 1;
         margin-left: auto;
         transition-duration: 0.4s;
     }
