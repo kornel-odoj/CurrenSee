@@ -1,6 +1,6 @@
 const nbpApi = 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json';
 const btn = document.querySelector('.input-button');
-
+const inputField = document.querySelector('.input-name')
 const fetchCurrencies = async () => {
     const result1 = await fetch(nbpApi);
     const currenciesObject = await result1.json();
@@ -15,7 +15,7 @@ const fetchCurrencies = async () => {
 const calculateCurrencies = async () => {
     const result = await fetchCurrencies();
     let EUR, USD, CHF;
-    const input = parseFloat(document.querySelector('.input-name').value);
+    const input = parseFloat(inputField.value);
     const select = document.querySelector('.currency-select').value;
     const paragraphResult  = document.querySelector('.result');
     let calculated = 0;
@@ -52,3 +52,9 @@ const calculateCurrencies = async () => {
 };
 
 btn.addEventListener('click', calculateCurrencies);
+
+inputField.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        calculateCurrencies();
+    }
+});
