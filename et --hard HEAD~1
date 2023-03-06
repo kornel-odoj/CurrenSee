@@ -1,0 +1,8 @@
+[33mf9f0bd3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m Increase font size for form elements
+[33maf7ad20[m Add onkeydown event for executing function Add step attribute for input
+[33m7c84db5[m Change button appearance for Safari
+[33ma5222c9[m Add sweetalert and restrict user from inputting incorrect values
+[33mffb7955[m Remove placeholder text from paragraph
+[33m680179c[m Add calculate currencies and display result function
+[33m725e2c0[m Add fetch from NBP API function Update app styling
+[33m231fe0b[m Initial commit for CurrenSee
