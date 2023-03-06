@@ -52,7 +52,6 @@ form {
   display: flex;
 }
 form .input-button {
-  -webkit-appearance: none;
   opacity: 1;
   margin-left: auto;
   transition-duration: 0.4s;
@@ -72,6 +71,7 @@ form input, form select {
 
 .input-name, .currency-select, .input-button {
   padding: 0.5em;
+  font-size: 1em;
 }
 
 .currency-select {
