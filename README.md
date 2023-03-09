@@ -7,7 +7,7 @@ CurrenSee is a web application that is hosted online, so there is no installatio
 Simply visit the website at https://coruscating-malasada-9810f9.netlify.app/ to start using the application.
 
 ## Usage
-To use CurrenSee, simply enter the amount of money you wish to convert, select the currency you wish to convert from, and 'Enter' or 'Przelicz' button.\
+To use CurrenSee, simply enter the amount of money you wish to convert, select the currency you wish to convert from, and press 'Enter' on your keyboard or click 'Przelicz' button.\
 The application will automatically display the converted value based on the current exchange rate.
 
 ## Features
