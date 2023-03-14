@@ -1,16 +1,13 @@
 const nbpApi = 'https://api.nbp.pl/api/exchangerates/tables/A/?format=json';
 const btn = document.querySelector('.input-button');
 const inputField = document.querySelector('.input-name')
+
 const fetchCurrencies = async () => {
     const result1 = await fetch(nbpApi);
     const currenciesObject = await result1.json();
-    
-    const inner = currenciesObject[0];
-    const rates = inner.rates;
-
+    const rates = currenciesObject[0].rates;
     return rates;
 };
-
 
 const calculateCurrencies = async () => {
     const result = await fetchCurrencies();
@@ -30,7 +27,7 @@ const calculateCurrencies = async () => {
         }
     }
 
-    if (!isNaN(input) && input >= 0){
+    if (!isNaN(input) && input > 0){
         if(select == "EUR"){
             calculated = input * EUR;
         }else if(select == "USD"){
@@ -38,18 +35,24 @@ const calculateCurrencies = async () => {
         }else if(select == "CHF"){
             calculated = input * CHF;
         }
-        console.log("input type " +  typeof input);
         calculated = calculated.toFixed(2);
         paragraphResult.innerText = `${input} ${select} to ${calculated} PLN`;
     }else{
         swal({
-            title: "Kwota musi być liczbą nieujemną",
+            title: "Kwota musi być liczbą dodatnią",
             text: "Wprowadź odpowiednią wartość.",
             icon: "error",
-            button: "No dobra",
+            button: "OK",
           });
     }
 };
+
+const currencySelect = document.querySelector('.currency-select');
+currencySelect.addEventListener('change', () => {
+    const selectedCurrency = currencySelect.value;
+    const queryString = `?currencies=${selectedCurrency}#`;
+    window.history.replaceState(null, null, queryString);
+});
 
 btn.addEventListener('click', calculateCurrencies);
 
@@ -58,3 +61,7 @@ inputField.addEventListener('keydown', (e) => {
         calculateCurrencies();
     }
 });
+
+window.addEventListener('load', () => {
+    window.history.replaceState(null, null, '?currencies=EUR#');
+})
