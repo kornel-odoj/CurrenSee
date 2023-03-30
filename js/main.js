@@ -32,19 +32,11 @@ const calculateCurrencies = async () => {
     }
 };
 
-currencySelect.addEventListener('change', () => {
-    const queryString = `?currencies=${currencySelect.value}#`;
-    window.history.replaceState(null, null, queryString);
-});
-
 btn.addEventListener('click', calculateCurrencies);
 
 inputField.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
+        e.preventDefault();
         calculateCurrencies();
     }
 });
-
-window.addEventListener('load', () => {
-    window.history.replaceState(null, null, '?currencies=EUR#');
-})
